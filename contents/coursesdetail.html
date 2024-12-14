@@ -73,7 +73,6 @@
 
       <section id="takeQuiz" class="text-center">
         <a
-          href="quiz.html?courseId=<%= courseId %>"
           id="quizButton"
           class="btn btn-success btn-lg"
         >
@@ -154,7 +153,9 @@
             `http://localhost:5002/api/references?CourseId=${courseId}`
           );
           const references = await referencesResponse.json();
-
+          document.getElementById(
+            "quizButton"
+          ).href = `quiz.html?courseId=${courseId}`;
           // Dynamically display references
           const referencesContainer = document.getElementById(
             "referencesContainer"

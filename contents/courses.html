@@ -14,6 +14,66 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../styles.css" />
+    <style>
+      /* Custom card styling */
+      .card {
+        background-color: #ffffff; /* Lighter background color for a fresher look */
+        border: 1px solid #e0e0e0; /* Lighter border for softer appearance */
+        border-radius: 12px; /* More rounded corners */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Slightly stronger box shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+        max-width: 280px; /* Slightly increased width for better content fitting */
+        margin: 15px auto; /* Center the card with margin around */
+        padding: 15px; /* Padding inside the card for better spacing */
+      }
+    
+      /* Card hover effect */
+      .card:hover {
+        transform: translateY(-8px); /* More lift on hover */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Deeper shadow for hover effect */
+      }
+    
+      /* Card body adjustments */
+      .card-body {
+        padding: 1.2rem; /* Adjusted padding for better content spacing */
+      }
+    
+      /* Card title styling */
+      .card-title {
+        font-size: 1.2rem; /* Slightly larger font size for better readability */
+        font-weight: bold;
+        color: #333; /* Darker text color for better contrast */
+        margin-bottom: 10px; /* Space between title and description */
+      }
+    
+      /* Card description text styling */
+      .card-text {
+        font-size: 1rem;
+        color: #666; /* Softer grey for description text */
+        line-height: 1.5; /* Increased line height for better readability */
+        margin-bottom: 15px; /* More space below the description */
+      }
+    
+      /* Carousel control buttons visibility */
+      .carousel-control-prev-icon,
+      .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better visibility */
+        border-radius: 50%; /* Round buttons */
+        width: 45px; /* Increased button size */
+        height: 45px;
+        opacity: 1; /* Ensure buttons are visible */
+        transition: opacity 0.3s ease, transform 0.3s ease; /* Smooth opacity and transform transition */
+      }
+    
+      .carousel-control-prev-icon:hover,
+      .carousel-control-next-icon:hover {
+        background-color: #0056b3; /* Darker highlight color on hover */
+        opacity: 0.9; /* Slight fade on hover */
+        transform: scale(1.1); /* Slight scale up effect on hover */
+      }
+    </style>
+    
+    
   </head>
   <body>
     <!-- Navbar -->
@@ -30,6 +90,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
+            <!-- Home Button -->
+            <li class="nav-item">
+              <a class="nav-link btn btn-light" href="index.html">Home</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="#courses">Courses</a>
             </li>
@@ -42,58 +106,38 @@
             <li class="nav-item">
               <a class="nav-link btn btn-light" href="signup.html">Sign Up</a>
             </li>
-            <!-- Home Button -->
-            <li class="nav-item">
-              <a class="nav-link btn btn-light" href="index.html">Home</a>
-            </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section with Carousel -->
-    <header>
-      <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="../assets/banner1.jpg"
-              class="d-block w-100"
-              alt="Learning"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h1>Explore Our Courses</h1>
-              <p>Choose the right course to enhance your skills.</p>
-            </div>
-          </div>
-        </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#heroCarousel"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#heroCarousel"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </header>
-
     <!-- Main Content -->
     <main class="container my-5">
-      <section id="courses" class="mb-5">
+      <section id="courses" class="mb-5" style="margin-top:10%;">
         <h2 class="text-center mb-4" id="moduleName">Available Courses</h2>
-        <div class="row" id="courseList">
-          <!-- Dynamic Course Buttons will be inserted here -->
+
+        <div id="courseListCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner" id="carouselItems">
+            <!-- Dynamic Course Cards Will Be Inserted Here -->
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#courseListCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#courseListCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </section>
     </main>
@@ -149,63 +193,60 @@
       async function fetchCourses() {
         const { moduleId, moduleName } = getQueryParams();
 
-        // Check if moduleId exists, if not, display an error message
         if (!moduleId || !moduleName) {
           document.getElementById("moduleName").innerText =
             "Invalid module selected.";
           return;
         }
 
-        // Update the page with the module name
         document.getElementById(
           "moduleName"
         ).innerText = `Courses for ${moduleName}`;
 
         try {
-          // Fetch courses based on the module ID from the new API
           const response = await fetch(
             `http://localhost:5002/api/get-courses-by-module?moduleId=${moduleId}`
           );
 
-          // Check if the response is successful
           if (!response.ok) {
             throw new Error("Failed to fetch courses.");
           }
 
           const courses = await response.json();
-          console.log(courses);
+          const carouselItems = document.getElementById("carouselItems");
+          carouselItems.innerHTML = "";
 
-          const courseList = document.getElementById("courseList");
-
-          // If no courses are returned for the given module, show a message
           if (courses.length === 0) {
-            courseList.innerHTML = "<p>No courses found for this module.</p>";
+            carouselItems.innerHTML = "<p>No courses found for this module.</p>";
             return;
           }
 
-          // Loop through the courses and display them
-          courses.forEach((course) => {
-            const courseCard = document.createElement("div");
-            courseCard.classList.add("col-md-4", "mb-4");
-            courseCard.innerHTML = `
-                <div class="card bg-light text-center">
-                  <div class="card-body">
-                    <h5 class="card-title">${course.name}</h5>
-                    <p class="card-text">${course.description}</p>
-                    <a href="coursesdetail.html?id=${course.id}" class="btn btn-primary">View Details</a>
-                  </div>
+          courses.forEach((course, index) => {
+            const carouselItem = document.createElement("div");
+            carouselItem.classList.add("carousel-item");
+            if (index === 0) {
+              carouselItem.classList.add("active");
+            }
+
+            carouselItem.innerHTML = `
+             <div class="card bg-light text-center p-3">
+                <div class="card-body">
+                  <h5 class="card-title course-name">${course.name}</h5>
+                  <p class="card-text course-description mb-3">${course.description}</p>
+                   <a href="coursesdetail.html?id=${course.id}" class="btn btn-primary">View Details</a>
                 </div>
-              `;
-            courseList.appendChild(courseCard);
+              </div>
+
+            `;
+            carouselItems.appendChild(carouselItem);
           });
         } catch (error) {
           console.error("Error fetching courses:", error);
-          document.getElementById("courseList").innerHTML =
+          document.getElementById("carouselItems").innerHTML =
             "<p>Error loading courses.</p>";
         }
       }
 
-      // Call the function to fetch and display the courses when the page loads
       document.addEventListener("DOMContentLoaded", fetchCourses);
     </script>
   </body>
