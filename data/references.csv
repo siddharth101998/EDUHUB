@@ -1,0 +1,26 @@
+Id,CourseId,Topic,URL
+1,1,Introduction to HTML Basics,https://www.youtube.com/watch?v=kUMe1FH4CHE
+2,1,HTML Elements and Structure Overview,https://www.youtube.com/watch?v=Qi7YtfPTBfw
+3,1,Building a Simple HTML Page,https://www.youtube.com/watch?v=pQN-pnXPaVg
+4,1,HTML Tags Deep Dive,https://www.youtube.com/watch?v=UB1O30fR-EE
+5,1,HTML Forms and Input Types,https://www.youtube.com/watch?v=bWPMSSsVdPk
+6,2,CSS Fundamentals for Beginners,https://www.youtube.com/watch?v=yfoY53QXEnI
+7,2,Styling with CSS Selectors,https://www.youtube.com/watch?v=1Rs2ND1ryYc
+8,2,Understanding the Box Model in CSS,https://www.youtube.com/watch?v=ieTHC78giGQ
+9,2,Advanced CSS Techniques,https://www.youtube.com/watch?v=n4R2E7O-Ngo
+10,2,Responsive CSS Design Strategies,https://www.youtube.com/watch?v=J35jug1uHzE
+11,3,JavaScript Intro and Variables,https://www.youtube.com/watch?v=W6NZfCO5SIk
+12,3,JavaScript Functions and Loops,https://www.youtube.com/watch?v=hdI2bqOjy3c
+13,3,DOM Manipulation with JavaScript,https://www.youtube.com/watch?v=PkZNo7MFNFg
+14,3,JavaScript Event Handling,https://www.youtube.com/watch?v=upDLs1sn7g4
+15,3,ES6 Features Overview,https://www.youtube.com/watch?v=_apQGZEFB8c
+16,4,Flexbox Basics for Responsive Design,https://www.youtube.com/watch?v=JJSoEo8JSnc
+17,4,Aligning Items Using Flexbox,https://www.youtube.com/watch?v=Vj7NZ6FiQvo
+18,4,Flexbox Layout Techniques,https://www.youtube.com/watch?v=3YW65K6LcIA
+19,4,Practical Flexbox Examples,https://www.youtube.com/watch?v=qZv-rNx0jEA
+20,4,Flexbox Properties in Action,https://www.youtube.com/watch?v=9zBsdzdE4sM
+21,5,React Overview and Setup,https://www.youtube.com/watch?v=Ke90Tje7VS0
+22,5,Building React Components,https://www.youtube.com/watch?v=w7ejDZ8SWv8
+23,5,State Management in React,https://www.youtube.com/watch?v=bMknfKXIFA8
+24,5,React Router Basics,https://www.youtube.com/watch?v=nTeuhbP7wdE
+25,5,React Props and Context API,https://www.youtube.com/watch?v=dGcsHMXbSOA

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      .profile-header {
+        background-color: #f8f9fa;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .profile-header img {
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        margin-bottom: 1rem;
+      }
+      .profile-info {
+        margin-top: 2rem;
+      }
+      .social-links i {
+        font-size: 1.5rem;
+        margin-right: 10px;
+      }
+      .social-links a {
+        color: #333;
+      }
+      .card {
+        margin-top: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container my-5">
+      <!-- Profile Header -->
+      <div class="profile-header text-center">
+        <img
+          src="https://via.placeholder.com/120"
+          alt="Profile Picture"
+          id="profile-picture"
+        />
+        <h2 id="user-name">John Doe</h2>
+        <p class="text-muted" id="user-email">johndoe@example.com</p>
+        <p id="user-bio">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+          tincidunt leo at velit egestas, non consequat nulla tempor.
+        </p>
+
+        <!-- Social Links -->
+        <div class="social-links mt-3">
+          <a href="#" class="me-3"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="me-3"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+      <!-- Profile Info -->
+      <div class="profile-info row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h5>Personal Details</h5>
+            </div>
+            <div class="card-body">
+              <p>
+                <strong>Full Name:</strong> <span id="full-name">John Doe</span>
+              </p>
+              <p><strong>Gender:</strong> <span id="gender">Male</span></p>
+              <p>
+                <strong>Location:</strong>
+                <span id="location">New York, USA</span>
+              </p>
+              <p>
+                <strong>Date of Birth:</strong>
+                <span id="dob">January 1, 1990</span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h5>Work Experience</h5>
+            </div>
+            <div class="card-body">
+              <p>
+                <strong>Company:</strong> <span id="company">TechCorp</span>
+              </p>
+              <p>
+                <strong>Role:</strong> <span id="role">Software Developer</span>
+              </p>
+              <p>
+                <strong>Years of Experience:</strong>
+                <span id="experience">5 Years</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="card mt-4">
+        <div class="card-header bg-primary text-white">
+          <h5>Recent Activity</h5>
+        </div>
+        <div class="card-body">
+          <ul id="activity-list">
+            <li>Posted a new article: "The Future of Web Development"</li>
+            <li>Updated LinkedIn profile</li>
+            <li>Completed a Python course on Data Science</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // This is where you would fetch dynamic user data from the server (e.g., using AJAX/fetch)
+      document.getElementById("user-name").innerText = "Jane Doe"; // Replace with dynamic data
+      document.getElementById("user-email").innerText = "janedoe@example.com"; // Replace with dynamic data
+      document.getElementById("user-bio").innerText =
+        "Experienced software developer and passionate about learning new technologies.";
+      document.getElementById("full-name").innerText = "Jane Doe"; // Replace with dynamic data
+      document.getElementById("gender").innerText = "Female"; // Replace with dynamic data
+      document.getElementById("location").innerText = "San Francisco, USA"; // Replace with dynamic data
+      document.getElementById("dob").innerText = "March 15, 1992"; // Replace with dynamic data
+      document.getElementById("company").innerText = "InnovativeTech"; // Replace with dynamic data
+      document.getElementById("role").innerText = "Frontend Developer"; // Replace with dynamic data
+      document.getElementById("experience").innerText = "3 Years"; // Replace with dynamic data
+      // You could populate the recent activity list dynamically as well.
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Detail - EduHub</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">EduHub</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#courses">Courses</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-light" href="login.html">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link btn btn-light" href="signup.html">Sign Up</a>
+            </li>
+            <!-- Home Button -->
+            <li class="nav-item">
+              <a class="nav-link btn btn-light" href="index.html">Home</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header>
+      <div class="bg-primary text-white text-center py-5">
+        <h1 id="courseTitle">Course Detail</h1>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+      <section id="courseInfo" class="my-5">
+        <!-- Course details will be dynamically inserted here -->
+      </section>
+
+      <section id="referencesSection" class="my-5">
+        <h2 class="text-center mb-4">Course References</h2>
+        <div id="referencesContainer" class="row">
+          <!-- References will be dynamically inserted here -->
+        </div>
+      </section>
+
+      <section id="takeQuiz" class="text-center">
+        <a
+          href="quiz.html?courseId=<%= courseId %>"
+          id="quizButton"
+          class="btn btn-success btn-lg"
+        >
+          Take Quiz
+        </a>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>About EduHub</h5>
+            <p>
+              EduHub is your one-stop platform for online learning, connecting
+              learners to industry experts.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="#courses">Courses</a></li>
+              <li><a href="#about">About</a></li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5>Follow Us</h5>
+            <div class="social-icons">
+              <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-footer">
+        <p>&copy; 2024 EduHub. All Rights Reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      async function fetchCourseDetail() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const courseId = urlParams.get("id");
+
+        if (!courseId) {
+          document.getElementById("courseInfo").innerHTML =
+            "<p>Invalid course selected.</p>";
+          return;
+        }
+
+        try {
+          // Fetch course details
+          const courseResponse = await fetch(
+            `http://localhost:5002/api/references?CourseId=${courseId}`
+          );
+          const course = await courseResponse.json();
+
+          if (!course || course.length === 0) {
+            document.getElementById("courseInfo").innerHTML =
+              "<p>Course details not found.</p>";
+            return;
+          }
+
+          // Update course information
+          const courseInfo = course[0]; // Assuming the course data is in an array
+          document.getElementById("courseTitle").innerText = courseInfo.Topic;
+
+          // Displaying course info dynamically
+
+          // Fetch references for the course
+          const referencesResponse = await fetch(
+            `http://localhost:5002/api/references?CourseId=${courseId}`
+          );
+          const references = await referencesResponse.json();
+
+          // Dynamically display references
+          const referencesContainer = document.getElementById(
+            "referencesContainer"
+          );
+          referencesContainer.innerHTML = ""; // Clear existing references
+
+          references.forEach((reference) => {
+            const card = document.createElement("div");
+            card.classList.add("col-md-4", "mb-4");
+            card.innerHTML = `
+              <div class="card">
+                <img src="https://img.youtube.com/vi/${getYouTubeID(
+                  reference.URL
+                )}/0.jpg" class="card-img-top" alt="${reference.Topic}">
+                <div class="card-body">
+                  <h5 class="card-title">${reference.Topic}</h5>
+                  <a href="${
+                    reference.URL
+                  }" target="_blank" class="btn btn-primary">Watch Video</a>
+                </div>
+              </div>
+            `;
+            referencesContainer.appendChild(card);
+          });
+        } catch (error) {
+          console.error("Error fetching course details:", error);
+          document.getElementById("courseInfo").innerHTML =
+            "<p>Error loading course details.</p>";
+        }
+      }
+
+      function getYouTubeID(url) {
+        const match = url.match(
+          /(?:https?:\/\/(?:www\.)?youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=))([\w-]{11})/
+        );
+        return match ? match[1] : "";
+      }
+
+      document.addEventListener("DOMContentLoaded", fetchCourseDetail);
+    </script>
+  </body>
+</html>

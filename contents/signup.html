@@ -1,114 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign Up - EduHub</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
-</head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
 
-<body>
+    <link rel="stylesheet" href="../styles.css" />
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+      import { getFirestore } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
+    </script>
+  </head>
+
+  <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">EduHub</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-                </ul>
-            </div>
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">EduHub</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.html">Login</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <!-- Sign-Up Form -->
-    <div class="container" style="margin-top: 80px;">
-        <h2 class="text-center mb-4">Create an Account</h2>
-        <form class="mx-auto" style="max-width: 500px;" id="signupForm">
-            <!-- Full Name -->
-            <div class="mb-3">
-                <label for="name" class="form-label">Full Name</label>
-                <input type="text" class="form-control" id="name" required>
-            </div>
-            
-            <!-- Email Address -->
-            <div class="mb-3">
-                <label for="email" class="form-label">Email address</label>
-                <input type="email" class="form-control" id="email" required>
-            </div>
-            
-            <!-- Phone Number -->
-            <div class="mb-3">
-                <label for="phone" class="form-label">Phone Number</label>
-                <input type="text" class="form-control" id="phone" pattern="^\d{10}$" required>
-                <small class="text-muted">Enter a 10-digit phone number</small>
-            </div>
 
-            <!-- Address -->
-            <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <textarea class="form-control" id="address" rows="3" required></textarea>
-            </div>
-
-            <!-- Password -->
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" required>
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mb-3">
-                <label for="confirmPassword" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="confirmPassword" required>
-            </div>
-
-            <!-- Date of Birth -->
-            <div class="mb-3">
-                <label for="dob" class="form-label">Date of Birth</label>
-                <input type="date" class="form-control" id="dob" required>
-            </div>
-
-            <!-- Gender -->
-            <div class="mb-3">
-                <label for="gender" class="form-label">Gender</label>
-                <select class="form-select" id="gender" required>
-                    <option value="" selected disabled>Select your gender</option>
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
-        </form>
-
-        <div class="text-center mt-3">
-            <p>Already have an account? <a href="login.html">Login here</a></p>
+    <div class="container" style="margin-top: 80px">
+      <h2 class="text-center mb-4">Create an Account</h2>
+      <form class="mx-auto" style="max-width: 500px" id="signup-form">
+        <!-- Full Name -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" id="name" required />
         </div>
+
+        <!-- Email Address -->
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="email" required />
+        </div>
+
+        <!-- Phone Number -->
+        <div class="mb-3">
+          <label for="phone" class="form-label">Phone Number</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            pattern="^\d{10}$"
+            required
+          />
+          <small class="text-muted">Enter a 10-digit phone number</small>
+        </div>
+
+        <!-- Address -->
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <textarea
+            class="form-control"
+            id="address"
+            rows="3"
+            required
+          ></textarea>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" required />
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label"
+            >Confirm Password</label
+          >
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            required
+          />
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="mb-3">
+          <label for="dob" class="form-label">Date of Birth</label>
+          <input type="date" class="form-control" id="dob" required />
+        </div>
+
+        <!-- Gender -->
+        <div class="mb-3">
+          <label for="gender" class="form-label">Gender</label>
+          <select class="form-select" id="gender" required>
+            <option value="" selected disabled>Select your gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+      </form>
+
+      <div class="text-center mt-3">
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+      </div>
     </div>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/main.js"></script>
 
-    <script>
-        // Form validation
-        document.getElementById('signupForm').addEventListener('submit', function(event) {
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
+    <script type="module">
+      // Import Firebase App (required for all Firebase services)
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-app.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-auth.js";
+      import {
+        getFirestore,
+        doc,
+        setDoc,
+      } from "https://www.gstatic.com/firebasejs/9.16.0/firebase-firestore.js";
 
-            if (password !== confirmPassword) {
-                event.preventDefault(); // Prevent form submission
-                alert("Passwords do not match!");
-            }
-        });
+      // Your Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyB_PKWF56ewvUlxgOnESMcRzpHkI1ET_I8",
+        authDomain: "edu-hub-6d472.firebaseapp.com",
+        projectId: "edu-hub-6d472",
+        storageBucket: "edu-hub-6d472.firebasestorage.app",
+        messagingSenderId: "718923597318",
+        appId: "1:718923597318:web:8d30e1e3759a72f63c6587",
+        measurementId: "G-EF7VGKZRG0",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const db = getFirestore(app);
+
+      // Signup functionality
+      const signupForm = document.getElementById("signup-form");
+      signupForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const email = signupForm.email.value;
+        const password = signupForm.password.value;
+        const name = signupForm.name.value; // Assuming you have a field for name
+        const phone = signupForm.phone.value; // Assuming you have a field for phone number
+        const address = signupForm.address.value; // Assuming you have a field for address
+        const gender = signupForm.gender.value; // Assuming you have a dropdown for gender
+
+        try {
+          // Create a user in Firebase Authentication
+          const userCredential = await createUserWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+          const user = userCredential.user;
+
+          console.log("User signed up:", user);
+
+          // Add user to Firestore database
+          const userDocRef = doc(db, "users", user.uid); // Use UID as document ID
+          await setDoc(userDocRef, {
+            name: name,
+            email: email,
+            phone_number: phone,
+            address: address,
+            gender: gender,
+            created: new Date().toISOString(),
+          });
+
+          console.log("User added to Firestore database.");
+
+          // Optional: Redirect or display success message
+          alert("Signup successful and user added to database!");
+          window.location.href = "login.html"; // Redirect to login page
+        } catch (error) {
+          console.error("Error signing up:", error.message);
+          alert("Error signing up: " + error.message);
+        }
+      });
     </script>
-</body>
-
+  </body>
 </html>
