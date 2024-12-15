@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard - EduHub</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+      </nav>
+
+    <main class="container my-5">
+      <h1 class="text-center mb-4">Welcome to Your Dashboard</h1>
+      <div id="dashboardContent"></div>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    ></script>
+    <script src="js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const dashboardContent = document.getElementById("dashboardContent");
+        const userRole = await getUserRoleFromBackend(); // Replace with API call
+
+        if (userRole === "student") {
+          const courses = await fetchEnrolledCourses(); // Replace with API call
+
+          dashboardContent.innerHTML = `
+            <h2>Your Courses</h2>
+            <ul>
+              ${courses
+                .map(
+                  (course) => `
+                <li>
+                  <a href="course.html?id=${course.id}">${course.title}</a>
+                  <progress value="${course.progress}" max="100"></progress>
+                </li>
+              `
+                )
+                .join("")}
+            </ul>
+            <h2>Upcoming Quizzes</h2>
+            <ul>
+              <li>Quiz 1 - Date</li>
+              </ul>
+          `;
+        } else if (userRole === "mentor") {
+          dashboardContent.innerHTML = `
+            <h2>Courses You Manage</h2>
+            <ul>
+              <li>Course A - <a href="#">Edit</a></li>
+              </ul>
+            <button>Add New Course</button>
+          `;
+        } else if (userRole === "admin") {
+          dashboardContent.innerHTML = `
+            <h2>User Activity</h2>
+            <p>...</p>
+            <h2>Manage Users</h2>
+            <button>View Users</button>
+            <h2>Manage Courses</h2>
+            <button>View Courses</button>
+          `;
+        }
+      });
+
+      async function getUserRoleFromBackend() {
+        // Replace with your actual API call
+        try {
+          const response = await fetch("/api/user/role");
+          const data = await response.json();
+          return data.role;
+        } catch (error) {
+          console.error("Error getting user role:", error);
+          return "unknown"; // Or handle the error appropriately
+        }
+      }
+
+      async function fetchEnrolledCourses() {
+        // Replace with your actual API call
+        try {
+          const response = await fetch("/api/student/courses");
+          const data = await response.json();
+          return data.courses;
+        } catch (error) {
+          console.error("Error getting enrolled courses:", error);
+          return []; // Or handle the error appropriately
+        }
+      }
+    </script>
+  </body>
+</html>

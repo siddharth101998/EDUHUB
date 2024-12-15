@@ -1,221 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduHub - Empower Your Learning</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Bootstrap Icons CDN -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../styles.css" />
-  </head>
-  <body>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">EduHub</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#courses">Courses</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#categories">Categories</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link btn btn-light" href="login.html">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link btn btn-light" href="signup.html">Sign Up</a>
-            </li>
-          </ul>
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">EduHub</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#categories">Categories</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#footer">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profile.html">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin.html">Admin</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-light" href="login.html">Login</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-light" href="signup.html">Sign Up</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
     <!-- Hero Section with Carousel -->
     <header>
-      <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img
-              src="../assets/banner1.jpg"
-              class="d-block w-100"
-              alt="Learning"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h1>Welcome to EduHub</h1>
-              <p>Discover the best courses for your career growth.</p>
-              <a href="#courses" class="btn btn-primary mt-3"
-                >Explore Courses</a
-              >
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="../assets/banner1.jpg" class="d-block w-100" alt="Learning">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Welcome to EduHub</h1>
+                        <p>Discover the best courses for your career growth.</p>
+                        <a href="#courses" class="btn btn-primary mt-3">Explore Courses</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/banner2.jpg" class="d-block w-100" alt="Growth">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Upskill with Experts</h1>
+                        <p>Learn from top instructors worldwide.</p>
+                        <a href="#categories" class="btn btn-primary mt-3">Browse Categories</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/banner3.jpg" class="d-block w-100" alt="Future">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Your Future Starts Here</h1>
+                        <p>Join millions of learners across the globe.</p>
+                        <a href="about.html" class="btn btn-primary mt-3">Learn More</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="../assets/banner4.jpg" class="d-block w-100" alt="Future">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Your Future Starts Here</h1>
+                        <p>Join millions of learners across the globe.</p>
+                        <a href="about.html" class="btn btn-primary mt-3">Learn More</a>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="../assets/banner2.jpg"
-              class="d-block w-100"
-              alt="Growth"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h1>Upskill with Experts</h1>
-              <p>Learn from top instructors worldwide.</p>
-              <a href="#categories" class="btn btn-primary mt-3"
-                >Browse Categories</a
-              >
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="../assets/banner3.jpg"
-              class="d-block w-100"
-              alt="Future"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h1>Your Future Starts Here</h1>
-              <p>Join millions of learners across the globe.</p>
-              <a href="#about" class="btn btn-primary mt-3">Learn More</a>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img
-              src="../assets/banner4.jpg"
-              class="d-block w-100"
-              alt="Future"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h1>Your Future Starts Here</h1>
-              <p>Join millions of learners across the globe.</p>
-              <a href="#about" class="btn btn-primary mt-3">Learn More</a>
-            </div>
-          </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#heroCarousel"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#heroCarousel"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
     </header>
 
     <!-- Main Content -->
     <main class="container my-5">
-      <section id="courses" class="mb-5">
-        <h2 class="text-center mb-4">Popular Courses</h2>
-        <div class="row" id="courseList">
-          <!-- Dynamic Course Cards -->
-        </div>
-      </section>
+        <section id="courses" class="mb-5">
+            <h2 class="text-center mb-4">Popular Courses</h2>
+            <div class="row" id="courseList">
+                <!-- Dynamic Course Cards -->
+            </div>
+        </section>
 
-      <section id="categories" class="mb-5">
-        <h2 class="text-center mb-4">Explore Categories</h2>
-        <div class="row" id="moduleList">
-          <!-- Modules will be inserted here dynamically -->
-        </div>
-      </section>
+        <section id="categories" class="mb-5">
+            <h2 class="text-center mb-4">Explore Categories</h2>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card bg-light text-center p-3">
+                        <h5 class="card-title">Web Development</h5>
+                        <p class="card-text">HTML, CSS, JavaScript, React, and more.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-light text-center p-3">
+                        <h5 class="card-title">Data Science</h5>
+                        <p class="card-text">Python, Machine Learning, and AI.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-light text-center p-3">
+                        <h5 class="card-title">Design</h5>
+                        <p class="card-text">UI/UX, Graphic Design, and more.</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card bg-light text-center p-3">
+                        <h5 class="card-title">Business</h5>
+                        <p class="card-text">Marketing, Finance, and Leadership.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <h5>About EduHub</h5>
-            <p>
-              EduHub is your one-stop platform for online learning, connecting
-              learners to industry experts.
-            </p>
-          </div>
-          <div class="col-md-4">
-            <h5>Quick Links</h5>
-            <ul class="list-unstyled">
-              <li><a href="#courses">Courses</a></li>
-              <li><a href="#categories">Categories</a></li>
-              <li><a href="#about">About</a></li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <h5>Follow Us</h5>
-            <div class="social-icons">
-              <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
-              <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
-              <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
-              <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+    <footer id="footer" class="bg-dark text-white py-4">
+        <div  class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About EduHub</h5>
+                    <p>EduHub is your one-stop platform for online learning, connecting learners to industry experts.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="admin.html">Admin</a></li>
+                        <li><a href="team.html">The Team</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-      <div class="bottom-footer">
-        <p>&copy; 2024 EduHub. All Rights Reserved.</p>
-      </div>
+        <div class="bottom-footer">
+            <p>&copy; 2024 EduHub. All Rights Reserved.</p>
+        </div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="../main.js"></script>
-
-    <!-- Fetch Modules using the API -->
-    <script>
-      async function fetchModules() {
-        try {
-          const response = await fetch("http://localhost:5002/api/get-modules");
-          const modules = await response.json();
-          console.log(modules);
-
-          const moduleList = document.getElementById("moduleList");
-          modules.forEach((module) => {
-            const card = document.createElement("div");
-            card.classList.add("col-md-3");
-            card.innerHTML = `
-              <div class="card bg-light text-center p-3">
-                <h5 class="card-title">${module.name}</h5>
-                <p class="card-text">Learn all about ${module.name}</p>
-                <a href="courses.html?moduleId=${module.id}&moduleName=${module.name}" class="btn btn-primary mt-3">View Course</a>
-              </div>
-            `;
-            console.log(module.id);
-            moduleList.appendChild(card);
-          });
-        } catch (error) {
-          console.error("Error fetching modules:", error);
-        }
-      }
-
-      document.addEventListener("DOMContentLoaded", fetchModules);
-    </script>
-  </body>
+    <script src="js/main.js"></script>
+</body>
 </html>
